@@ -1,0 +1,37 @@
+<h1 class="text-center text-primary text-uppercase">{{user.userName}}</h1>
+<p class="text-center lead">Edite tu perfil</p>
+<div class="my-5 text-center">
+  {{#if imagen}}
+    <picture>
+      <img
+        src="/img/perfiles/{{imagen}}"
+        alt="aleatorio"
+        class="rounded-circle"
+      />
+    </picture>
+  {{else}}
+    <picture>
+      <img
+        src="https://picsum.photos/200"
+        alt="aleatorio"
+        class="rounded-circle"
+      />
+    </picture>
+  {{/if}}
+</div>
+
+<form
+  action="/perfil?_csrf={{csrfToken}}"
+  method="post"
+  enctype="multipart/form-data"
+>
+  {{!-- <input type="hidden" name="_csrf" value="{{csrfToken}}" /> --}}
+  <label for="formFileSm" class="form-label">Modifica tu imagen de perfil</label>
+  <input
+    class="form-control form-control-sm"
+    id="formFileSm"
+    type="file"
+    name="myFile"
+  />
+  <button class="btn btn-dark w-100 my-2">Cambiar imagen de perfil</button>
+</form>
